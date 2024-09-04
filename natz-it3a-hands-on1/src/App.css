@@ -1,0 +1,102 @@
+/* General body styling */
+body {
+  margin: 0; /* Remove default margin around the body */
+  font-family: Arial, sans-serif; /* Use a clean sans-serif font for readability */
+  background-color: #00fff2; /* Dark background color for the page */
+  color: #000000; /* Light text color for better contrast against the dark background */
+}
+
+/* Container for the entire app */
+.App {
+  display: flex; /* Use Flexbox layout for flexible and responsive design */
+  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+}
+
+/* Header styling with animation */
+header {
+  background-color: #000000; /* Slightly lighter dark background color */
+  color: #10d8a6; /* Light text color */
+  padding: 20px; /* Padding around the content in the header */
+  animation: slideIn 0.5s ease-out; /* Apply slide-in animation */
+  border-radius: 2px; /* Rounded corners for a softer look */
+}
+
+/* Keyframes for slide-in animation */
+@keyframes slideIn {
+  from {
+      transform: translateY(-100%); /* Start from above the viewport */
+      opacity: 0; /* Start with full transparency */
+  }
+  to {
+      transform: translateY(0); /* End at the normal position */
+      opacity: 1; /* End with full opacity */
+  }
+}
+
+/* About section styling with animation */
+#about {
+  padding: 30px; /* Padding inside the About section */
+  background-color: #000000; /* Dark background color for the About section */
+  margin: 20px auto; /* Center the section horizontally and add margin from other content */
+  max-width: 800px; /* Limit the maximum width for readability on large screens */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  box-shadow: 0 2px 50px rgb(0, 0, 0); /* Darker shadow for better depth effect */
+  animation: fadeIn 1s ease-in; /* Apply fade-in animation */
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0; /* Start with full transparency */
+  }
+  to {
+      opacity: 1; /* End with full opacity */
+  }
+}
+
+/* Footer styling with animation */
+footer {
+  background-color: #000000; /* Slightly lighter dark background color */
+  color: #e0e0e0; /* Light text color */
+  text-align: center; /* Center-align text in the footer */
+  padding: 10px 20px; /* Padding around the content in the footer */
+  margin-top: auto; /* Push footer to the bottom of the page using Flexbox layout */
+  animation: slideIn 0.5s ease-out; /* Apply slide-in animation */
+}
+
+/* Navigation link hover animation */
+nav a {
+  color: aqua (0, 132, 255); /* Light text color for links */
+  text-decoration: none; /* Remove underline from links */
+  transition: color 0.3s, transform 0.3s; /* Smooth transition for color and transform */
+}
+
+nav a:hover {
+  text-decoration: none; /* Underline on hover */
+  color: rgb(0, 255, 221); /* Light purple color on hover for visual appeal */
+  transform: scale(1.1); /* Slightly enlarge the link on hover */
+}
+
+
+/* Responsive styles for tablets and smaller screens */
+@media (max-width: 768px) {
+  header, footer {
+      padding: 15px; /* Reduce padding for smaller screens to fit content better */
+  }
+
+  #about {
+      padding: 15px; /* Reduce padding for smaller screens */
+  }
+}
+
+/* Responsive styles for very small screens */
+@media (max-width: 480px) {
+  header h1 {
+      font-size: 1.2rem; /* Smaller font size for header text on very small screens */
+  }
+
+  #about {
+      padding: 10px; /* Further reduce padding for very small screens */
+  }
+}

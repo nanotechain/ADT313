@@ -1,0 +1,93 @@
+/* Base styles for the About component */
+#about {
+    text-align: center; /* Center-align text and image */
+    padding: 20px;      /* Add padding around the section */
+  }
+  
+  #about img {
+    border-radius: 50%; /* Circular image */
+    width: 150px;       /* Default width for the image */
+    height: 150px;      /* Default height for the image */
+    margin-top: 20px;   /* Margin above the image */
+    box-shadow: 0px 4px 15px rgb(2, 255, 242); /* Shadow for the image */
+  }
+  
+  #about h2 {
+    font-size: 2.5rem;  /* Default font size for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    color: #03f7ff;         /* Dark grey color for the heading */
+  }
+  
+  #about p {
+    font-size: 1.2rem;  /* Default font size for paragraphs */
+    line-height: 1.6;   /* Line height for readability */
+    color: #00ffffb6;        /* Light grey color for the text */
+    max-width: 800px;   /* Maximum width for paragraphs */
+    margin: 0 auto 20px; /* Center the paragraph and add bottom margin */
+  }
+  
+  #about span {
+    font-weight: bold; /* Make the names stand out */
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1200px) {
+    #about h2 {
+      font-size: 2.2rem; /* Adjust font size for medium screens */
+    }
+  
+    #about p {
+      font-size: 1.1rem; /* Adjust font size for medium screens */
+    }
+  
+    #about img {
+      width: 200px;    /* Adjust image size for medium screens */
+      height: 200px;   /* Adjust image size for medium screens */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    #about h2 {
+      font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+  
+    #about p {
+      font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+  
+    #about img {
+      width: 180px;    /* Adjust image size for smaller screens */
+      height: 180px;   /* Adjust image size for smaller screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #about h2 {
+      font-size: 1.8rem; /* Adjust font size for tablets */
+    }
+  
+    #about p {
+      font-size: 0.9rem; /* Adjust font size for tablets */
+    }
+  
+    #about img {
+      width: 150px;    /* Adjust image size for tablets */
+      height: 150px;   /* Adjust image size for tablets */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    #about h2 {
+      font-size: 1.6rem; /* Adjust font size for mobile screens */
+    }
+  
+    #about p {
+      font-size: 0.8rem; /* Adjust font size for mobile screens */
+    }
+  
+    #about img {
+      width: 120px;    /* Adjust image size for mobile screens */
+      height: 120px;   /* Adjust image size for mobile screens */
+    }
+  }
+  

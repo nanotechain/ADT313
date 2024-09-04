@@ -1,0 +1,31 @@
+/* Base styles for .Section-color */
+.Section-color {
+  font-family: fantasy; /* Sets the font to a fantasy style */
+  color: blue;          /* Sets the text color to blue */
+  font-size: 40pt;      /* Default font size */
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .Section-color {
+      font-size: 35pt; /* Adjust font size for medium screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .Section-color {
+      font-size: 30pt; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .Section-color {
+      font-size: 25pt; /* Adjust font size for tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .Section-color {
+      font-size: 20pt; /* Adjust font size for mobile screens */
+  }
+}

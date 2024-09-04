@@ -1,0 +1,35 @@
+/* Base styles for the Description component */
+.Descript-color {
+    font-size: 2rem; /* Default font size */
+    color: #333; /* Text color */
+    text-align: center; /* Center the text */
+    margin: 20px; /* Margin around the component */
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1200px) {
+    .Descript-color {
+      font-size: 1.8rem; /* Adjust font size for medium screens */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .Descript-color {
+      font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .Descript-color {
+      font-size: 1.2rem; /* Adjust font size for mobile screens */
+      margin: 15px; /* Adjust margin for mobile screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .Descript-color {
+      font-size: 1rem; /* Smaller font size for very small screens */
+      margin: 10px; /* Adjust margin for very small screens */
+    }
+  }
+  

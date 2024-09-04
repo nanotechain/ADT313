@@ -1,0 +1,77 @@
+/* Base styles for the Footer component */
+footer {
+    background-color: #000000; /* Dark background color */
+    color: white;             /* White text color */
+    text-align: center;       /* Center-align text */
+    padding: 20px;          /* Vertical padding */
+    position: absolute;       /* Position at the bottom of the page */
+    bottom: 0;                /* Stick to the bottom of the content */
+    width: 100%;              /* Full width */
+    box-sizing: border-box;  /* Ensure padding is included in the width */
+}
+
+footer p {
+    margin: 0;                /* Remove default margin */
+    font-size: 0.9rem;        /* Font size for the text */
+}
+
+footer ul {
+    list-style: none;         /* Remove bullet points */
+    padding: 0;               /* Remove default padding */
+    margin: 10px 0 0;         /* Margin above the list */
+    display: flex;            /* Display list items in a flex container */
+    justify-content: center;  /* Center-align list items */
+    gap: 20px;                /* Space between list items */
+}
+
+footer ul li {
+    display: inline;          /* Display list items inline */
+}
+
+footer ul li a {
+    color: rgb(4, 255, 242);            /* White text color for links */
+    text-decoration: none;   /* Remove underline */
+    font-size: 1rem;         /* Font size for links */
+}
+
+footer ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Styling */
+@media (max-width: 1200px) {
+    footer p {
+        font-size: 0.8rem;   /* Slightly smaller font size for larger tablets */
+    }
+}
+
+@media (max-width: 992px) {
+    footer p {
+        font-size: 0.85rem;  /* Adjust font size for tablets */
+    }
+
+    footer ul {
+        gap: 15px;          /* Reduce gap between list items */
+    }
+}
+
+@media (max-width: 768px) {
+    footer ul {
+        flex-direction: column; /* Stack list items vertically */
+        gap: 10px;              /* Space between list items */
+    }
+}
+
+@media (max-width: 576px) {
+    footer {
+        padding: 15px 0;      /* Reduce padding on very small screens */
+    }
+
+    footer p {
+        font-size: 0.75rem;   /* Smaller font size for very small screens */
+    }
+
+    footer ul {
+        gap: 8px;             /* Further reduce gap between list items */
+    }
+}

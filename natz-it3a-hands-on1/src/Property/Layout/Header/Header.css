@@ -1,0 +1,183 @@
+/* Base styles for the Header component */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #000000; /* Dark background color */
+    color: aqua;             /* White text color */
+}
+
+/* Typewriter effect animation */
+@keyframes typewriter {
+    0% {
+        width: 0; /* Start with no visible text */
+    }
+    25% {
+        width: 100%; /* Full width of the text */
+    }
+    50% {
+        width: 100%; /* Still full width, pause here to show text fully */
+    }
+    75% {
+        width: 0; /* Text is being deleted */
+    }
+    100% {
+        width: 0; /* End with no visible text */
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent; /* Cursor blinks by toggling border color */
+    }
+}
+
+/* Header text with typewriter effect */
+header h1 {
+    font-size: 2rem;
+    overflow: hidden; /* Ensures text is clipped if overflow occurs */
+    white-space: nowrap; /* Prevents text wrapping */
+    border-right: 3px solid aqua; /* Cursor effect */
+    width: 20ch; /* Limits the visible width to 20 characters */
+    animation: 
+        typewriter 4s steps(20, end) infinite, /* Infinite loop of typewriter effect */
+        blink 500ms steps(20, end) infinite; /* Cursor blink effect */
+}
+
+/* Keyframes for typewriter effect */
+@keyframes typewriter {
+    0% {
+        width: 0; /* Start with no visible text */
+    }
+    25% {
+        width: 16.60ch; /* Full width of the text */
+    }
+    50% {
+        width: 16.60ch; /* Text fully visible */
+    }
+    75% {
+        width: 0; /* Text is being deleted */
+    }
+    100% {
+        width: 0; /* End with no visible text */
+    }
+}
+
+/* Keyframes for blinking text effect */
+@keyframes textBlink {
+    0%, 100% {
+        opacity: 1; /* Text is visible */
+    }
+    50% {
+        opacity: 0; /* Text is invisible */
+    }
+}
+
+/* Header styling with typewriter effect and blinking text */
+header h1 {
+    font-size: 2rem; /* Set the font size */
+    overflow: hidden; /* Ensures text is clipped if overflow occurs */
+    white-space: nowrap; /* Prevents text wrapping */
+    width: 16.60ch; /* Limits the visible width to 16.60 characters */
+    border-right: 3px solid rgba(255, 255, 255, 0); /* Initial invisible cursor */
+    animation: 
+        typewriter 4s steps(16.60, end) infinite, /* Infinite loop of typewriter effect */
+        textBlink 1s step-end infinite; /* Infinite blink effect for the text */
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    header {
+        padding: 15px; /* Adjust padding for tablets */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Adjust font size for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: center; /* Center-align items */
+        text-align: center; /* Center-align text */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    header h1 {
+        font-size: 1.2rem; /* Smaller font size for mobile devices */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px; /* Further reduce padding for very small screens */
+    }
+
+    header h1 {
+        font-size: 1rem; /* Even smaller font size for very small screens */
+    }
+}
+
+
+nav ul {
+    list-style: none;         /* Remove default list styles */
+    display: flex;            /* Display list items in a row */
+    gap: 15px;                /* Space between navigation items */
+    margin: 0;                /* Remove default margin */
+    padding: 0;               /* Remove default padding */
+}
+
+nav a {
+    color: rgba(0, 255, 255, 0.849);            /* White text color for links */
+    text-decoration: none;   /* Remove underline from links */
+}
+
+nav a:hover {
+    text-decoration: none; /* Underline on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    header {
+        padding: 15px;        /* Adjust padding for tablets */
+    }
+
+    nav ul {
+        gap: 10px;           /* Reduce gap between navigation items */
+    }
+
+    nav a {
+        font-size: 0.9rem;   /* Slightly smaller font size for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: center;   /* Center-align items */
+        text-align: center;    /* Center-align text */
+        padding: 15px;         /* Adjust padding for smaller screens */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack navigation items vertically */
+        gap: 8px;               /* Reduce gap between items */
+        margin-top: 10px;       /* Add margin above navigation */
+    }
+
+    nav a {
+        font-size: 0.9rem;     /* Smaller font size for mobile devices */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;        /* Further reduce padding for very small screens */
+    }
+
+    nav a {
+        font-size: 0.8rem;   /* Even smaller font size for very small screens */
+    }
+}
