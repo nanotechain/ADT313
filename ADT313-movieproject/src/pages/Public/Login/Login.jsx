@@ -28,13 +28,10 @@ function Login() {
     switch (type) {
       case 'email':
         setEmail(event.target.value);
-
         break;
-
       case 'password':
         setPassword(event.target.value);
         break;
-
       default:
         break;
     }
@@ -43,25 +40,31 @@ function Login() {
   const handleLogin = async () => {
     const data = { email, password };
     setStatus('loading');
-    console.log(data);
 
-    await axios({
-      method: 'post',
-      url: '/user/login',
-      data,
-      headers: { 'Access-Control-Allow-Origin': '*' },
-    })
-      .then((res) => {
+    try {
+      await axios({
+        method: 'post',
+        url: '/user/login',
+        data,
+        headers: { 'Access-Control-Allow-Origin': '*' },
+      }).then((res) => {
         console.log(res);
         localStorage.setItem('accessToken', res.data.access_token);
-        navigate('/main/dashboard');
-        setStatus('idle');
-      })
-      .catch((e) => {
-        console.log(e);
-        setStatus('idle');
-        alert(e.response.data.message);
+
+        // Ensure the spinner is shown for 3 seconds
+        setTimeout(() => {
+          setStatus('idle');
+          navigate('/home');
+        }, 3000);
       });
+    } catch (e) {
+      console.log(e);
+
+      // Ensure the spinner is shown for 3 seconds even on error
+      setTimeout(() => {
+        setStatus('idle');
+      }, 3000);
+    }
   };
 
   useEffect(() => {
@@ -71,7 +74,8 @@ function Login() {
   return (
     <div className='Login'>
       <div className='main-container'>
-        <h3>Login</h3>
+        <h3>Sign In</h3>
+        <p className="text-description">Never look back… because with Dontflix, you’ll never want to</p>
         <form>
           <div className='form-container'>
             <div>
@@ -84,7 +88,7 @@ function Login() {
                   onChange={(e) => handleOnChange(e, 'email')}
                 />
               </div>
-              {debounceState && isFieldsDirty && email == '' && (
+              {debounceState && isFieldsDirty && email === '' && (
                 <span className='errors'>This field is required</span>
               )}
             </div>
@@ -98,7 +102,7 @@ function Login() {
                   onChange={(e) => handleOnChange(e, 'password')}
                 />
               </div>
-              {debounceState && isFieldsDirty && password == '' && (
+              {debounceState && isFieldsDirty && password === '' && (
                 <span className='errors'>This field is required</span>
               )}
             </div>
@@ -108,34 +112,33 @@ function Login() {
 
             <div className='submit-container'>
               <button
+                className='btn-primary'
                 type='button'
                 disabled={status === 'loading'}
                 onClick={() => {
-                  if (status === 'loading') {
-                    return;
-                  }
                   if (email && password) {
-                    handleLogin({
-                      type: 'login',
-                      user: { email, password },
-                    });
+                    setStatus('loading');
+                    handleLogin();
                   } else {
                     setIsFieldsDirty(true);
-                    if (email == '') {
-                      emailRef.current.focus();
-                    }
-
-                    if (password == '') {
-                      passwordRef.current.focus();
-                    }
+                    if (email === '') emailRef.current.focus();
+                    if (password === '') passwordRef.current.focus();
                   }
                 }}
               >
-                {status === 'idle' ? 'Login' : 'Loading'}
+                {status === 'loading' ? (
+                  <div className="loading-spinner"></div>
+                ) : (
+                  'Login'
+                )}
               </button>
             </div>
+
             <div className='register-container'>
-              <span><small>Don't have an account? <a href='/register'>Register</a></small></span>
+              <small>New to Dontflix? </small>
+              <a href='/register'> 
+                <small>Sign up now</small>
+              </a>
             </div>
           </div>
         </form>
