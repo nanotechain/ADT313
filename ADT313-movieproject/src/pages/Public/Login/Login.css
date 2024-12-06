@@ -1,129 +1,184 @@
-.Login {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(Login.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+.Login-Form {
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.main-container {
-  width: 320px;
-  border-radius: 0.75rem;
-  background-color: #000000;
-  padding: 2rem;
-  color: rgba(243, 244, 246, 1);
-  display: flex;
-  flex-direction: column;
-  
+.Login-Form h1.text-title {
+    font-size: 1.8rem;
+    color: #000000 rgb(0, 0, 0);
+    margin-bottom: 10px;
 }
 
-.main-container h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #fff;
-  text-align: center;
+.Login-Form p.text-description {
+    font-size: 1rem;
+    color: #000000 rgb(0, 0, 0);
+    margin-bottom: 20px;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%; /* Ensures the form-container stretches fully inside the main container */
-  gap: 1rem;
+.Login-Form .box-form {
+    text-align: left;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers the content within each group */
-  margin-top: 0.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  width: 100%; /* Ensures consistent layout */
+.Login-Form .box-form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000 rgb(0, 0, 0);
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
 }
 
-.form-group label {
-  display: block;
-  color: rgba(156, 163, 175, 1);
-  margin-bottom: 4px;
-  text-align: left;
-  width: 100%;
+.Login-Form .box-form input[type="text"],
+.Login-Form .box-form input[type="password"] {
+    width: calc(100% - 20px);
+    max-width: 500px;
+    padding: 10px;
+    background: #5a2a3a;
+    border: 1px solid #0bedf5;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border 0.3s;
+    text-align: left;
 }
 
-.form-group input {
-  padding: 0.8rem;
-  font-size: 1rem;
-  background: #5a2a3a;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  outline: none;
-  width: 100%; /* Ensures consistent width */
-  box-sizing: border-box;
+.Login-Form .box-form input:focus {
+    outline: none;
+    border: 1px solid #000000 ;
+    box-shadow: 0px 0px 8px #db0000 rgb(219 ,0 ,0 );
 }
 
-.form-group input:focus {
-  border: 2px solid rgba(167, 139, 250, 1);
+.Login-Form .form-check {
+    text-align: left;
+    margin-bottom: 20px;
+    display: flex;
 }
 
-.submit-container {
-  margin-top: 1rem;
+.button-box-login {
+    text-align: center;
 }
 
-.btn-primary {
-  display: block;
-  width: 100%;
-  background-color: #ff133d;
-  padding: 0.75rem;
-  text-align: center;
-  color: rgba(17, 24, 39, 1);
-  border: none;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 800;
-  cursor: pointer;
+.Login-Form .form-check .showpassword-login {
+    font-size: 0.85rem;
+    color: #94949400;
 }
 
-.btn-primary:hover {
-  background-color: #e6003c;
+.selection-login {
+    display: flex;
+    justify-content: space-between;
 }
 
-.register-container {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #aaa;
-  text-align: center;
+.forgotpassword-login {
+    font-size: 0.85rem;
+    color: #666666;
+    cursor: pointer;
 }
 
-.register-container a {
-  color: #fff;
-  text-decoration: none;
+.forgotpassword-login:hover {
+    color: #48465a;
 }
 
-.register-container a:hover {
-  text-decoration: underline;
-}
-.loading-spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(0, 0, 0, 0.1);
-  border-top: 3px solid #3498db; /* Spinner color */
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  display: inline-block;
-  margin: auto;
+.Login-Form .btn {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.Login-Form .btn:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    transform: translateY(-3px);
 }
 
+.Login-Form .btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.Login-Form .text-center a {
+    font-size: 0.85rem;
+    color: #2575fc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.Login-Form .text-center a:hover {
+    color: #6a11cb;
+}
+
+.text-danger-login {
+    font-size: 0.85rem;
+    color: #ff4d4f;
+    text-align: left;
+    display: block;
+}
+
+.text-message-box {
+    width: 100%;
+    height: 40px;
+    background-color: #ffa0a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: #ff4d4f solid 1px;
+    color: #ffffff;
+}
+
+.error-display {
+    width: 100%;
+    height: 17px;
+    padding: 2px;
+}
+
+@media (max-width: 500px) {
+    .Login-Form {
+        width: 300px;
+        height: auto;
+    }
+
+    .Login-Form h1.text-title {
+        font-size: 1.3rem;
+    }
+
+    .Login-Form p.text-description {
+        font-size: 0.8rem;
+        color: #3d2424;
+        margin-bottom: 20px;
+    }
+
+    .Login-Form .box-form label {
+        font-size: 1.0rem;
+        margin-top: -8px;
+    }
+
+    .Login-Form .box-form input[type="text"],
+    .Login-Form .box-form input[type="password"] {
+        width: calc(100% - 18px);
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .Login-Form .form-check label {
+        font-size: 0.75rem;
+        color: #666666;
+    }
+
+    .Login-Form .text-center a:hover {
+        color: #6a11cb;
+    }
+
+    .text-danger-login {
+        font-size: 0.65rem;
+    }
+}

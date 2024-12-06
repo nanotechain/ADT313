@@ -1,18 +1,130 @@
-.lists-container {
+.bg-custom {
+    background-color: #343a40;
+}
+
+.text-light {
+    color: #f8f9fa;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
     width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #212529;
+}
+
+thead th {
+    padding: 10px;
+    text-align: left;
+    color: #f8f9fa;
+    font-weight: bold;
+}
+
+tbody td {
+    padding: 10px;
+    border-top: 1px solid #dee2e6;
+}
+
+tr:nth-child(even) {
+    background-color: #495057;
+}
+
+tr:hover {
+    background-color: #6c757d;
+}
+
+.btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.btn-primary, .btn-top {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    width: 100px;
+    height: 40px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+.ms-2 {
+    margin-left: 0.5rem;
+}
+
+.d-flex {
     display: flex;
-    flex-direction: column;
-  }
-  .create-container {
-    align-self: flex-end;
-    margin: 1rem 0;
-  }
-  .table-container,
-  .movie-lists {
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #dee2e6;
+    margin: 20px 0;
+}
+
+.table-responsive {
+    max-height: 80vh;  
+    scrollbar-width: none; 
+    border-radius: 5px;
+}
+
+.table-responsive::-webkit-scrollbar {
+    display: none;
+}
+
+.top-context {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-  }
-  
-  .table-container {
+    align-items: center;
+    height: 40px;
+}
+
+.text-center {
     text-align: center;
-  }
-  
+}

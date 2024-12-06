@@ -1,8 +1,9 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
-import './Login.css';
+import { useState, useRef, useCallback, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDebounce } from '../../../utils/hooks/useDebounce';
+import { AuthContext } from '../../../utils/context/AuthContext';
 import axios from 'axios';
+import './Login.css'
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -14,12 +15,16 @@ function Login() {
   const userInputDebounce = useDebounce({ email, password }, 2000);
   const [debounceState, setDebounceState] = useState(false);
   const [status, setStatus] = useState('idle');
-
   const navigate = useNavigate();
+
+  const { setAuthData } = useContext(AuthContext);
+
+  //alert-box
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handleShowPassword = useCallback(() => {
     setIsShowPassword((value) => !value);
-  }, [isShowPassword]);
+  }, []);
 
   const handleOnChange = (event, type) => {
     setDebounceState(false);
@@ -29,119 +34,157 @@ function Login() {
       case 'email':
         setEmail(event.target.value);
         break;
+
       case 'password':
         setPassword(event.target.value);
         break;
+
       default:
         break;
     }
   };
 
+  let apiEndpoint;
+
+  if (window.location.pathname.includes('/admin')) {
+    apiEndpoint = '/admin/login';
+  } else {
+    apiEndpoint = '/user/login';
+  }
+
   const handleLogin = async () => {
     const data = { email, password };
     setStatus('loading');
+    console.log(data);
 
-    try {
-      await axios({
-        method: 'post',
-        url: '/user/login',
-        data,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-      }).then((res) => {
+    await axios({
+      method: 'post',
+      url: apiEndpoint,
+      data,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    })
+      .then((res) => {
         console.log(res);
         localStorage.setItem('accessToken', res.data.access_token);
-
-        // Ensure the spinner is shown for 3 seconds
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        setAuthData({
+          accessToken: res.data.access_token,
+          user: res.data.user,
+        });
+        setAlertMessage(res.data.message);
         setTimeout(() => {
+          if (res.data.user.role === 'admin') {
+            navigate('/main/dashboard');
+          } else {
+            navigate('/home')
+          }
           setStatus('idle');
-          navigate('/home');
+        }, 3000);
+      })
+      .catch((e) => {
+        console.log(e);
+        setAlertMessage(e.response?.data?.message || e.message);
+        setTimeout(() => {
+          setAlertMessage('');
+          setStatus('idle');
         }, 3000);
       });
-    } catch (e) {
-      console.log(e);
-
-      // Ensure the spinner is shown for 3 seconds even on error
-      setTimeout(() => {
-        setStatus('idle');
-      }, 3000);
-    }
   };
+
+  const { auth } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log('Auth Set Updated:', auth);
+  }, [auth]);
 
   useEffect(() => {
     setDebounceState(true);
   }, [userInputDebounce]);
 
   return (
-    <div className='Login'>
-      <div className='main-container'>
-        <h3>Sign In</h3>
-        <p className="text-description">Never look back… because with Dontflix, you’ll never want to</p>
-        <form>
-          <div className='form-container'>
-            <div>
-              <div className='form-group'>
-                <label>E-mail:</label>
-                <input
-                  type='text'
-                  name='email'
-                  ref={emailRef}
-                  onChange={(e) => handleOnChange(e, 'email')}
-                />
-              </div>
+    <div>
+      <div className="bg-Login">
+        <div className="Login-Form">
+          {alertMessage && (
+            <div className="text-message-box">
+              {alertMessage}
+            </div>
+          )}
+          <h1 className="text-title"><strong>Sign In</strong></h1>
+          <p className="text-description">Watch What You Want, Not What You’re Told.</p>
+          <form className='box-form'>
+            <label htmlFor="email"><strong>E-mail:</strong></label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              ref={emailRef}
+              onChange={(e) => handleOnChange(e, 'email')}
+            />
+            <div className='error-display'>
               {debounceState && isFieldsDirty && email === '' && (
-                <span className='errors'>This field is required</span>
+                <span className="text-danger-login"><strong>This field is required</strong></span>
               )}
-            </div>
-            <div>
-              <div className='form-group'>
-                <label>Password:</label>
-                <input
-                  type={isShowPassword ? 'text' : 'password'}
-                  name='password'
-                  ref={passwordRef}
-                  onChange={(e) => handleOnChange(e, 'password')}
-                />
-              </div>
-              {debounceState && isFieldsDirty && password === '' && (
-                <span className='errors'>This field is required</span>
-              )}
-            </div>
-            <div className='show-password' onClick={handleShowPassword}>
-              {isShowPassword ? 'Hide' : 'Show'} Password
             </div>
 
-            <div className='submit-container'>
+            <label htmlFor="password"><strong>Password:</strong></label>
+            <input
+              type={isShowPassword ? 'text' : 'password'}
+              id="password"
+              name="password"
+              ref={passwordRef}
+              onChange={(e) => handleOnChange(e, 'password')}
+            />
+            <div className='error-display'>
+              {debounceState && isFieldsDirty && password === '' && (
+                <span className="text-danger-login"><strong>This field is required</strong></span>
+              )}
+            </div>
+
+            <div className='selection-login'>
+              <div className="form-check">
+                <input
+                  type="checkbox"
+                  id="showPassword"
+                  onClick={handleShowPassword}
+                />
+                <div className='showpassword-login' htmlFor="showPassword">
+                  {isShowPassword ? 'Hide' : 'Show'} Password
+                </div>
+              </div>
+              <a className='forgotpassword-login' href='/reset-password'>
+                Forgot Password?
+              </a>
+            </div>
+
+            <div className='button-box-login'>
               <button
-                className='btn-primary'
-                type='button'
+                type="button"
+                className="btn"
                 disabled={status === 'loading'}
                 onClick={() => {
                   if (email && password) {
-                    setStatus('loading');
                     handleLogin();
                   } else {
                     setIsFieldsDirty(true);
-                    if (email === '') emailRef.current.focus();
-                    if (password === '') passwordRef.current.focus();
+                    if (email === '') {
+                      emailRef.current.focus();
+                    }
+                    if (password === '') {
+                      passwordRef.current.focus();
+                    }
                   }
                 }}
               >
-                {status === 'loading' ? (
-                  <div className="loading-spinner"></div>
-                ) : (
-                  'Login'
-                )}
+                {status === 'idle' ? 'Login' : 'Loading...'}
               </button>
-            </div>
 
-            <div className='register-container'>
-              <small>New to Dontflix? </small>
-              <a href='/register'> 
-                <small>Sign up now</small>
-              </a>
+              <div className="text-center">
+                <a href="/register">New to Dontflix? Sign up now</a>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

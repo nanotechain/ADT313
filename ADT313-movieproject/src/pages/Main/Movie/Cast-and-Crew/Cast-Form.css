@@ -1,0 +1,267 @@
+.cast-box {
+    background-color: gray;
+    height: 620px;
+    border-radius: 0px 5px 5px 5px;
+    display: flex;
+    align-items: center;
+}
+
+.Cast-View-Box,
+.Search-Box {
+    flex: auto;
+    padding: 10px;
+    text-align: center;
+    height: 580px;
+}
+
+.parent-container {
+    border-radius: 10px;
+    background-color: #838383;
+    margin-top: 10%;
+}
+
+.Cast-View-Box {
+    position: relative;
+    display: flex;
+}
+
+.Search-Box {
+    width: 397px;
+    background-color: rgb(96, 96, 96);
+}
+
+.Cast-View-Box {
+    width: 860px;
+    background-color: rgb(59, 59, 59);
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 40%;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.image-casts {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.card-display-cast {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+.card-wrapper {
+    display: inline-flex;
+    flex-wrap: nowrap;
+}
+
+.card-display-cast::-webkit-scrollbar {
+    height: 10px;
+}
+
+.card-display-cast::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.card-display-cast::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.card-display-cast::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.edit-button,
+.delete-button {
+    border-radius: 10px;
+    font-size: 13px;
+    color: white;
+}
+
+.edit-button {
+    background-color: #00ce33;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+.buttons-group {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+    gap: 5px;
+}
+
+.image-container {
+    background-color: rgb(54, 54, 54);
+    width: 200px;
+    height: 280px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.cast-detail-box {
+    padding: 10px;
+}
+
+.image-container-center {
+    display: flex;
+    justify-content: center;
+    background-image: url('./../../../../utils/images/—Pngtree—natural\ stone\ wall\ with\ light_1427425.jpg');
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: auto;
+    padding: 10px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+label {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cast-name,
+.character-name,
+.url-text-photo,
+.input-search-person {
+    flex: 2;
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-box-btn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+
+.button-search,
+.back-btn {
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: rgb(233, 233, 233);
+    border-radius: 4px;
+    width: 100px;
+}
+
+.edit-btn {
+    padding: 3px;
+    font-size: 14px;
+    color: white;
+    border: 1px solid #00df13;
+    background-color: rgb(0, 224, 56);
+    border-radius: 4px;
+    width: 100px;
+}
+
+.save-button {
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #00ce33;
+    background-color: rgb(0, 218, 29);
+    border-radius: 4px;
+    width: 60px;
+    color: white;
+}
+
+.btn-importer {
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #52ca70;
+    background-color: rgb(82, 224, 101);
+    border-radius: 4px;
+    width: 115px;
+    color: white;
+}
+
+.save-button:hover {
+    background-color: rgb(0, 184, 24);
+}
+
+.button-search:hover,
+.back-btn:hover {
+    background-color: #d1d1d1;
+}
+
+.edit-btn:hover {
+    background-color: rgb(0, 177, 44);
+}
+
+.btn-importer:hover {
+    background-color: rgb(44, 180, 78);
+}
+
+.edit-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img-cast {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.no-cast {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 1.5rem;
+    color: #9f9f9f;
+}
+
+.popover-error {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

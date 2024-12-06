@@ -1,12 +1,13 @@
 import { Outlet } from 'react-router-dom';
 
-const Movie = () => {
+const Movies = () => {
   return (
     <>
-      <h1>Movie Page</h1>
+      <h1>Movie</h1>
+      <hr />
       <Outlet />
     </>
   );
 };
 
-export default Movie;
+export default Movies;
