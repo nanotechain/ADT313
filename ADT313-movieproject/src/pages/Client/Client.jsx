@@ -52,7 +52,7 @@ function Client() {
         <>
             <main className="box">
                 <header>
-                    <h1 className="title-text" onClick={() => navigate('/home')}>MovieWebDB</h1>
+                    <h1 className="title-text" onClick={() => navigate('/home')}>DontFlix</h1>
                     <button className="button" id="toggleButton">
                         <div className="button-container">
                             <div className="divnav"></div>
@@ -73,7 +73,7 @@ function Client() {
                             Data provided by <a className='link-color' href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">(TMDb)</a>
                         </p>
                         <p className='size-font'>
-                            Proudly developed by Dontflix Corps, the innovative minds of BSIT-3A.
+                            Proudly developed by Dontflix Corps, the innovative minds of BSIT-3A
                         </p>
                     </div>
                     <div className="icons">

@@ -1,184 +1,147 @@
+
+  
 .Login-Form {
-    width: 400px;
-    height: auto;
-    padding: 20px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 4px;
+  padding: 70px;
+  width: 450px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.75);
 }
 
-.Login-Form h1.text-title {
-    font-size: 1.8rem;
-    color: #000000 rgb(0, 0, 0);
-    margin-bottom: 10px;
+.txt-LogIn {
+  color: #fff;
+  font-size: 2rem;
 }
 
-.Login-Form p.text-description {
-    font-size: 1rem;
-    color: #000000 rgb(0, 0, 0);
-    margin-bottom: 20px;
+.txt-description {
+  color: #fff;
+  font-size: 16px;
 }
 
-.Login-Form .box-form {
-    text-align: left;
+.box-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.Login-Form .box-form label {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #000000 rgb(0, 0, 0);
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
+.form-control {
+  position: relative;
 }
 
-.Login-Form .box-form input[type="text"],
-.Login-Form .box-form input[type="password"] {
-    width: calc(100% - 20px);
-    max-width: 500px;
-    padding: 10px;
-    background: #5a2a3a;
-    border: 1px solid #0bedf5;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    transition: border 0.3s;
-    text-align: left;
+.form-control input {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(59 59 59 / 19%);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  padding: 16px 20px 0;
+  font-size: 16px;
+  outline: none;
+  
 }
 
-.Login-Form .box-form input:focus {
-    outline: none;
-    border: 1px solid #000000 ;
-    box-shadow: 0px 0px 8px #db0000 rgb(219 ,0 ,0 );
+.form-control label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: #8c8c8c;
+  transition: all 0.1s ease;
+  pointer-events: none;
 }
 
-.Login-Form .form-check {
-    text-align: left;
-    margin-bottom: 20px;
-    display: flex;
-}
-
-.button-box-login {
-    text-align: center;
-}
-
-.Login-Form .form-check .showpassword-login {
-    font-size: 0.85rem;
-    color: #94949400;
-}
-
-.selection-login {
-    display: flex;
-    justify-content: space-between;
-}
-
-.forgotpassword-login {
-    font-size: 0.85rem;
-    color: #666666;
-    cursor: pointer;
-}
-
-.forgotpassword-login:hover {
-    color: #48465a;
-}
-
-.Login-Form .btn {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    color: #ffffff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
-}
-
-.Login-Form .btn:hover {
-    background: linear-gradient(to right, #2575fc, #6a11cb);
-    transform: translateY(-3px);
-}
-
-.Login-Form .btn:disabled {
-    background: #cccccc;
-    cursor: not-allowed;
-}
-
-.Login-Form .text-center a {
-    font-size: 0.85rem;
-    color: #2575fc;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.Login-Form .text-center a:hover {
-    color: #6a11cb;
-}
-
-.text-danger-login {
-    font-size: 0.85rem;
-    color: #ff4d4f;
-    text-align: left;
-    display: block;
-}
-
-.text-message-box {
-    width: 100%;
-    height: 40px;
-    background-color: #ffa0a1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    border: #ff4d4f solid 1px;
-    color: #ffffff;
+.form-control input:focus + label,
+.form-control input:not(:placeholder-shown) + label {
+  top: 7px;
+  font-size: 11px;
+  
 }
 
 .error-display {
-    width: 100%;
-    height: 17px;
-    padding: 2px;
+  height: 20px;
 }
 
-@media (max-width: 500px) {
-    .Login-Form {
-        width: 300px;
-        height: auto;
-    }
-
-    .Login-Form h1.text-title {
-        font-size: 1.3rem;
-    }
-
-    .Login-Form p.text-description {
-        font-size: 0.8rem;
-        color: #3d2424;
-        margin-bottom: 20px;
-    }
-
-    .Login-Form .box-form label {
-        font-size: 1.0rem;
-        margin-top: -8px;
-    }
-
-    .Login-Form .box-form input[type="text"],
-    .Login-Form .box-form input[type="password"] {
-        width: calc(100% - 18px);
-        padding: 8px;
-        font-size: 0.9rem;
-    }
-
-    .Login-Form .form-check label {
-        font-size: 0.75rem;
-        color: #666666;
-    }
-
-    .Login-Form .text-center a:hover {
-        color: #6a11cb;
-    }
-
-    .text-danger-login {
-        font-size: 0.65rem;
-    }
+.text-danger-login {
+  color: #e87c03;
+  font-size: 13px;
 }
+
+.selection-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.show-password-btn {
+  background: none;
+  border: none;
+  color: #8c8c8c;
+  cursor: pointer;
+  font-size: 13px;
+  animation-timeline: 0.1;
+}
+
+.forgotpassword-login {
+  color: #b3b3b3;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.forgotpassword-login:hover {
+  text-decoration: underline;
+}
+
+.button-box-login {
+  margin-top: 24px;
+}
+
+.btn {
+  width: 100%;
+  height: 50px;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  background-color: #f40612;
+}
+
+.btn:disabled {
+  background-color: #565656;
+  cursor: not-allowed;
+}
+
+.text-center {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.text-center a {
+  color: #737373;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.text-center a:hover {
+  text-decoration: underline;
+}
+
+.text-message-box {
+  background-color: #e87c03;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+

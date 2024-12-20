@@ -12,6 +12,7 @@
     "admin-dashboard-gonzales-nathaniel-bsit3a": "file:",
     "axios": "^1.7.9",
     "http-proxy-middleware": "^3.0.3",
+    "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
@@ -42,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-dev-server": "^5.2.0"
   }
 }

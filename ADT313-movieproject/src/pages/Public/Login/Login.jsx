@@ -1,97 +1,65 @@
-import { useState, useRef, useCallback, useEffect, useContext } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDebounce } from '../../../utils/hooks/useDebounce';
 import { AuthContext } from '../../../utils/context/AuthContext';
 import axios from 'axios';
-import './Login.css'
+import './Login.css';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [isFieldsDirty, setIsFieldsDirty] = useState(false);
-  const emailRef = useRef();
-  const passwordRef = useRef();
   const [isShowPassword, setIsShowPassword] = useState(false);
-  const userInputDebounce = useDebounce({ email, password }, 2000);
-  const [debounceState, setDebounceState] = useState(false);
   const [status, setStatus] = useState('idle');
-  const navigate = useNavigate();
-
-  const { setAuthData } = useContext(AuthContext);
-
-  //alert-box
   const [alertMessage, setAlertMessage] = useState('');
 
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const navigate = useNavigate();
+  const { setAuthData, auth } = useContext(AuthContext);
+
+  const debouncedFormData = useDebounce(formData, 2000);
+  const [debounceState, setDebounceState] = useState(false);
+
   const handleShowPassword = useCallback(() => {
-    setIsShowPassword((value) => !value);
+    setIsShowPassword((prev) => !prev);
   }, []);
 
-  const handleOnChange = (event, type) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
     setDebounceState(false);
     setIsFieldsDirty(true);
-
-    switch (type) {
-      case 'email':
-        setEmail(event.target.value);
-        break;
-
-      case 'password':
-        setPassword(event.target.value);
-        break;
-
-      default:
-        break;
-    }
   };
 
-  let apiEndpoint;
-
-  if (window.location.pathname.includes('/admin')) {
-    apiEndpoint = '/admin/login';
-  } else {
-    apiEndpoint = '/user/login';
-  }
+  const apiEndpoint = window.location.pathname.includes('/admin')
+    ? '/admin/login'
+    : '/user/login';
 
   const handleLogin = async () => {
-    const data = { email, password };
     setStatus('loading');
-    console.log(data);
-
-    await axios({
-      method: 'post',
-      url: apiEndpoint,
-      data,
-      headers: { 'Access-Control-Allow-Origin': '*' },
-    })
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem('accessToken', res.data.access_token);
-        localStorage.setItem('user', JSON.stringify(res.data.user));
-        setAuthData({
-          accessToken: res.data.access_token,
-          user: res.data.user,
-        });
-        setAlertMessage(res.data.message);
-        setTimeout(() => {
-          if (res.data.user.role === 'admin') {
-            navigate('/main/dashboard');
-          } else {
-            navigate('/home')
-          }
-          setStatus('idle');
-        }, 3000);
-      })
-      .catch((e) => {
-        console.log(e);
-        setAlertMessage(e.response?.data?.message || e.message);
-        setTimeout(() => {
-          setAlertMessage('');
-          setStatus('idle');
-        }, 3000);
+    try {
+      const res = await axios.post(apiEndpoint, formData, {
+        headers: { 'Access-Control-Allow-Origin': '*' },
       });
+      localStorage.setItem('accessToken', res.data.access_token);
+      localStorage.setItem('user', JSON.stringify(res.data.user));
+      setAuthData({
+        accessToken: res.data.access_token,
+        user: res.data.user,
+      });
+      setAlertMessage(res.data.message);
+      setTimeout(() => {
+        navigate(res.data.user.role === 'admin' ? '/main/dashboard' : '/home');
+        setStatus('idle');
+      }, 3000);
+    } catch (error) {
+      setAlertMessage(error.response?.data?.message || error.message);
+      setTimeout(() => {
+        setAlertMessage('');
+        setStatus('idle');
+      }, 3000);
+    }
   };
-
-  const { auth } = useContext(AuthContext);
 
   useEffect(() => {
     console.log('Auth Set Updated:', auth);
@@ -99,92 +67,97 @@ function Login() {
 
   useEffect(() => {
     setDebounceState(true);
-  }, [userInputDebounce]);
+  }, [debouncedFormData]);
 
   return (
-    <div>
-      <div className="bg-Login">
-        <div className="Login-Form">
-          {alertMessage && (
-            <div className="text-message-box">
-              {alertMessage}
-            </div>
-          )}
-          <h1 className="text-title"><strong>Sign In</strong></h1>
-          <p className="text-description">Watch What You Want, Not What You’re Told.</p>
-          <form className='box-form'>
-            <label htmlFor="email"><strong>E-mail:</strong></label>
+    <div class="bg-Login">
+      <div class="Login-Form">
+        {alertMessage && <div class="text-message-box">{alertMessage}</div>}
+        <h1 class="txt-LogIn">
+          <strong>Sign In</strong>
+        </h1>
+        <p class="txt-description">Watch What You Want, Not What You're Told.</p>
+        <form onSubmit={(e) => e.preventDefault()} action="box-form">
+          <div class="form-control">
             <input
-              type="text"
+              type="email"
               id="email"
               name="email"
               ref={emailRef}
-              onChange={(e) => handleOnChange(e, 'email')}
+              value={formData.email}
+              onChange={handleChange}
+              required
+              class=""
+              placeholder=""
             />
-            <div className='error-display'>
-              {debounceState && isFieldsDirty && email === '' && (
-                <span className="text-danger-login"><strong>This field is required</strong></span>
-              )}
-            </div>
+            <label htmlFor="email">Email</label>
+          </div>
+          <div class="error-display">
+            {debounceState && isFieldsDirty && formData.email === '' && (
+              <span class="text-danger-login">
+                <strong>This field is required</strong>
+              </span>
+            )}
+          </div>
 
-            <label htmlFor="password"><strong>Password:</strong></label>
+          <div class="form-control">
             <input
               type={isShowPassword ? 'text' : 'password'}
               id="password"
               name="password"
               ref={passwordRef}
-              onChange={(e) => handleOnChange(e, 'password')}
+              value={formData.password}
+              onChange={handleChange}
+              required
+              placeholder="Password"
             />
-            <div className='error-display'>
-              {debounceState && isFieldsDirty && password === '' && (
-                <span className="text-danger-login"><strong>This field is required</strong></span>
-              )}
-            </div>
+            
+            
+          </div>
+          <div class="error-display">
+            {debounceState && isFieldsDirty && formData.password === '' && (
+              <span class="text-danger-login">
+                <strong>This field is required</strong>
+              </span>
+            )}
+          </div>
 
-            <div className='selection-login'>
-              <div className="form-check">
-                <input
-                  type="checkbox"
-                  id="showPassword"
-                  onClick={handleShowPassword}
-                />
-                <div className='showpassword-login' htmlFor="showPassword">
-                  {isShowPassword ? 'Hide' : 'Show'} Password
-                </div>
-              </div>
-              <a className='forgotpassword-login' href='/reset-password'>
-                Forgot Password?
-              </a>
-            </div>
+          <div class="selection-login">
+            <button
+              type="button"
+              class="show-password-btn"
+              onClick={handleShowPassword}
+              aria-label={isShowPassword ? "Hide password" : "Show password"}
+            >
+            </button>
+            <a class="forgotpassword-login" href="/reset-password">
+              Forgot Password?
+            </a>
+          </div>
 
-            <div className='button-box-login'>
-              <button
-                type="button"
-                className="btn"
-                disabled={status === 'loading'}
-                onClick={() => {
-                  if (email && password) {
-                    handleLogin();
-                  } else {
-                    setIsFieldsDirty(true);
-                    if (email === '') {
-                      emailRef.current.focus();
-                    }
-                    if (password === '') {
-                      passwordRef.current.focus();
-                    }
-                  }
-                }}
-              >
-                {status === 'idle' ? 'Login' : 'Loading...'}
-              </button>
+          <div class="button-box-login">
+            <button
+              type="button"
+              class="btn"
+              disabled={status === 'loading'}
+              onClick={() => {
+                if (formData.email && formData.password) {
+                  handleLogin();
+                } else {
+                  setIsFieldsDirty(true);
+                  if (!formData.email) emailRef.current.focus();
+                  if (!formData.password) passwordRef.current.focus();
+                }
+              }}
+            >
+              {status === 'idle' ? 'Sign In' : 'Loading...'}
+            </button>
 
-              <div className="text-center">
-                <a href="/register">New to Dontflix? Sign up now</a>
-              </div>
+            <div class="text-center">
+              <a href="/register">New to Dontflix? Sign up now</a>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );

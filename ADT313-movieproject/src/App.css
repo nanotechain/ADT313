@@ -1,5 +1,5 @@
 .bg-Register{
-    /*background: linear-gradient(135deg, #acaaad, #97b4e7);*/
+  
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,13 +13,27 @@
 }
 
 .bg-Login{
-    /*background: linear-gradient(135deg, #acaaad, #97b4e7);*/
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-image: url(../src/utils/images/Login.jpg);
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+    z-index: -1;
+    
+}
+.bg-forget{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../src/utils/images/register.jpg);
     background-size: cover;
     object-fit: cover;
     background-position: center;

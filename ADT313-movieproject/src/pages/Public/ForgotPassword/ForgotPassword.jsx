@@ -101,6 +101,7 @@ function ForgotPassword() {
   }, [userInputDebounce]);
 
   return (
+    <div class="bg-forget">
     <div className='color-page'>
       <div className='ResetPassword-Form'>
         {!alertMessage && (
@@ -114,7 +115,6 @@ function ForgotPassword() {
         <h1 className="text-title-reset"><strong>Reset Password</strong></h1>
         <hr></hr>
         <form className='box-form-reset'>
-          <label htmlFor="email"><strong>E-mail:</strong></label>
           <input
             type="email"
             id="email"
@@ -129,7 +129,6 @@ function ForgotPassword() {
             )}
           </div>
 
-          <label htmlFor="password"><strong>New Password:</strong></label>
           <input
             type='password'
             id="new-password"
@@ -143,8 +142,6 @@ function ForgotPassword() {
               <span className="text-danger-reset"><strong>This field is required</strong></span>
             )}
           </div>
-
-          <label htmlFor="password"><strong>Re-enter Password:</strong></label>
           <input
             type='password'
             id="reenter-password"
@@ -187,6 +184,7 @@ function ForgotPassword() {
         </form>
       </div>
     </div>
+  </div>
   )
 }
 

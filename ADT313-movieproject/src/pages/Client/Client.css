@@ -19,8 +19,8 @@ body {
         "foot foot";
     grid-template-rows: 70px auto 90px;
     overflow: hidden;
-    grid-template-columns: auto 0;
-    transition: grid-template-columns 0.5s ease;
+    grid-template-columns: auto 0; 
+    transition: grid-template-columns 0.5s ease; 
 }
 
 header {
@@ -44,12 +44,12 @@ article {
     position: absolute;
     background-color: #45525f;
     padding: 10px;
-    width: 185px;
+    width: 185px; 
     top: 0;
     bottom: 0;
     right: 0;
     transition: transform 0.5s ease;
-    transform: translateX(100%);
+    transform: translateX(100%); 
     z-index: 1;
 }
 
@@ -69,7 +69,7 @@ article {
     background-color: #232b34;
 }
 
-.cover-sidebar{
+.cover-sidebar {
     position: absolute;
     background-color: rgba(63, 63, 63, 0.6);
     width: 100%;
@@ -146,7 +146,7 @@ footer {
     right: 0;
     left: 0;
     text-align: center;
-    user-select: none;
+    user-select: none;       
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -270,3 +270,21 @@ footer {
 .spacing-text {
     margin-left: 3px;
 }
+
+/* Media Query for Tablets */
+@media (min-width: 768px) {
+    .sidebar {
+      width: 250px; /* Increase sidebar width on tablets */
+    }
+    .container {
+      grid-template-columns: 3fr 1fr; /* Adjust grid layout */
+    }
+  }
+  
+  /* Media Query for Desktops */
+  @media (min-width: 1024px) {
+    .sidebar {
+      width: 300px; /* Further increase sidebar width on desktops */
+    }
+    /* Add more specific styles for larger screens */
+  }
