@@ -33,13 +33,19 @@
 .Main .custom-container .navigation ul li {
   padding: 10px 20px;
   margin-bottom: 10px;
+  transition: background 0.3s ease, color 0.3s ease, border-radius 0.3s ease, transform 0.3s ease;
 }
 
 .Main .custom-container .navigation ul li.active,
 .Main .custom-container .navigation ul li:hover {
   background: #1d0f9b;
   color: rgb(255, 255, 255);
+  border-top-right-radius: 100rem;
+  border-bottom-right-radius: 100rem;
+  transform: translateX(10px); /* Moves the item 10px to the right */
 }
+
+
 
 .Main .custom-container .navigation ul li a {
   text-decoration: none;
@@ -55,7 +61,7 @@
 }
 
 .bg-custom {
-  background-color: #343a40;
+  background-color: transparent;
 }
 
 .admin-info {
@@ -83,4 +89,45 @@
   font-size: 18px;
   margin-bottom: 10px;
   padding: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .Main {
+    flex-direction: column;
+    overflow: auto;
+  }
+
+  .Main .custom-container .navigation {
+    height: auto;
+    width: 100%;
+  }
+
+  .navigation ul li {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .Main .custom-container .outlet {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation {
+    width: 80px;
+  }
+
+  .Main .custom-container .navigation ul li {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .role {
+    font-size: 12px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
 }

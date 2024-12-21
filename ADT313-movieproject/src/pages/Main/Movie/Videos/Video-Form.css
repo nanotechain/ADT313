@@ -183,3 +183,113 @@
 .edit-save-btn:hover {
     background-color: rgb(0, 177, 44);
 }
+@media (max-width: 1024px) {
+    .video-box {
+      flex-direction: column;
+      height: auto;
+      border-radius: 5px;
+    }
+  
+    .Video-Search-Box {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .Video-View-Box {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .card-display-videos {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      padding: 5px;
+    }
+  
+    .video-frame-container {
+      width: 100%;
+      height: 180px;
+    }
+  
+    .video-info-text {
+      max-width: 100%;
+    }
+  
+    .save-edit-back-btn {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .clear-btn, 
+    .edit-save-btn {
+      width: 100%;
+      padding: 8px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .card-display-videos {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  
+    .video-frame-container {
+      height: 150px;
+    }
+  
+    .video-info-text {
+      padding: 5px;
+    }
+  
+    .video-url,
+    .video-name,
+    .site-name,
+    .video-type-name,
+    .seletor-official {
+      font-size: 12px;
+      padding: 5px;
+    }
+  
+    .clear-btn, 
+    .edit-save-btn {
+      font-size: 12px;
+      padding: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .video-box {
+      height: auto;
+    }
+  
+    .Video-Search-Box,
+    .Video-View-Box {
+      width: 100%;
+    }
+  
+    .card-display-videos {
+      grid-template-columns: 1fr;
+    }
+  
+    .video-frame-container {
+      height: 120px;
+    }
+  
+    .save-edit-back-btn {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 5px;
+    }
+  
+    .clear-btn, 
+    .edit-save-btn {
+      width: 100%;
+      font-size: 10px;
+      padding: 4px;
+    }
+  
+    .no-videos {
+      font-size: 1.2rem;
+    }
+  }
+  

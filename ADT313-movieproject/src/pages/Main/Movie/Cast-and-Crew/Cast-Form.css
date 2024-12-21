@@ -265,3 +265,150 @@ label {
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+@media (max-width: 1024px) {
+    /* Adjust main container */
+    .cast-box {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .Search-Box {
+      width: 100%;
+      height: auto;
+    }
+  
+    .Cast-View-Box {
+      width: 100%;
+      height: auto;
+    }
+  
+    .card {
+      width: 90%;
+      margin: 10px auto;
+    }
+  
+    .card-wrapper {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .image-container {
+      width: 150px;
+      height: 200px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    /* Stack elements vertically */
+    .cast-box {
+      height: auto;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+  
+    .Search-Box,
+    .Cast-View-Box {
+      width: 100%;
+      height: auto;
+    }
+  
+    .card {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    .card-wrapper {
+      flex-wrap: wrap;
+    }
+  
+    .info-text {
+      max-width: 100%;
+      padding: 5px;
+    }
+  
+    .image-container {
+      width: 100px;
+      height: 150px;
+    }
+  
+    .input-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    label {
+      text-align: left;
+      margin-bottom: 5px;
+    }
+  
+    .cast-name,
+    .character-name,
+    .url-text-photo,
+    .input-search-person {
+      width: 100%;
+    }
+  
+    .search-box-btn {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .button-search,
+    .back-btn,
+    .save-button,
+    .btn-importer {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Small screen optimizations */
+    .cast-box {
+      padding: 5px;
+    }
+  
+    .image-container {
+      width: 80px;
+      height: 120px;
+    }
+  
+    .card {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .info-text {
+      padding: 5px;
+    }
+  
+    .input-group {
+      align-items: flex-start;
+    }
+  
+    label {
+      font-size: 12px;
+    }
+  
+    .cast-name,
+    .character-name,
+    .url-text-photo,
+    .input-search-person {
+      font-size: 12px;
+    }
+  
+    .button-search,
+    .back-btn,
+    .save-button,
+    .btn-importer {
+      font-size: 12px;
+      padding: 5px;
+      width: 100%;
+    }
+  
+    .popover-error {
+      font-size: 0.8rem;
+      padding: 5px;
+    }
+  }

@@ -29,13 +29,14 @@ function Main() {
   }, [auth.accessToken, handleLogout]);
 
   return (
+    <div class="bg-Login">
     <div className="Main">
       <div className="custom-container">
         <div className="navigation text-light">
           <div className="admin-info">
             <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: '50px', color: 'white' }} />
             <span className="user-info">
-              <p className="role">{auth.user.role}</p>
+              
               <h1 className="name">{auth.user.firstName}</h1>
             </span>
           </div>
@@ -68,6 +69,7 @@ function Main() {
           <Outlet />
         </div>
       </div>
+    </div>
     </div>
   );
 }

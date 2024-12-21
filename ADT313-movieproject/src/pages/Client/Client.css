@@ -126,7 +126,7 @@ footer {
 }
 
 .button:hover .divnav {
-    background-color: #343a40;
+    background-color: transparent;
 }
 
 .title-text {
@@ -263,7 +263,7 @@ footer {
 }
 
 .nav-user a:hover {
-    background-color: #343a40;
+    background-color: transparent;
     color: rgb(218, 218, 218);
 }
 
