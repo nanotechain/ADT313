@@ -61,6 +61,7 @@ function Home() {
   }, [lists]);
 
   return (
+    <div class="bg-Login">
     <div className='main-container'>
       {featuredMovie && lists.length ? (
         <div className='featured-list-container'>
@@ -121,6 +122,7 @@ function Home() {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 }

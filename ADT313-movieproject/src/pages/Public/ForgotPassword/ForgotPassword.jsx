@@ -112,8 +112,7 @@ function ForgotPassword() {
             {alertMessage}
           </div>
         )}
-        <h1 className="text-title-reset"><strong>Reset Password</strong></h1>
-        <hr></hr>
+        <h1 className="text-title-reset"><strong>Change Password</strong></h1>
         <form className='box-form-reset'>
           <input
             type="email"
@@ -178,7 +177,7 @@ function ForgotPassword() {
                 }
               }}
             >
-              {status === 'idle' ? 'Change Password' : 'Loading...'}
+              {status === 'idle' ? 'Submit' : 'Loading...'}
             </button>
           </div>
         </form>

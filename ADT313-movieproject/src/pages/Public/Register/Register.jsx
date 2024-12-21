@@ -110,9 +110,8 @@ function Register() {
           </div>
         )}
         <div>
-          <h1 className="text-title"><strong>DontFlix</strong></h1>
-          <p className="text-description">Sign up to unlock the movies, reviews and discover a new content!</p>
-          <hr></hr>
+          <h1 className="text-title"><strong>Sign Up</strong></h1>
+          <p className="text-description"> Watch, Relax, Enjoy, Your New Addiction Awaits.</p>
           <form className='box-form'>
             <label htmlFor="firstName">First Name:</label>
             <input

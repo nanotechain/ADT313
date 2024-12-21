@@ -25,7 +25,7 @@ body {
 
 header {
     grid-area: head;
-    background-color: #343a40;
+    background-color: transparent;
     transform: translateY(-100%);
     transition: transform 0.5s ease-in-out;
     display: flex;
@@ -42,7 +42,7 @@ article {
 
 .sidebar {
     position: absolute;
-    background-color: #45525f;
+    background-color: transparent;
     padding: 10px;
     width: 185px; 
     top: 0;
@@ -54,7 +54,7 @@ article {
 }
 
 .close-sidebar {
-    background-color: #2f3841;
+    background-color: transparent;
     color: white;
     border: none;
     width: 25px;
@@ -66,7 +66,7 @@ article {
 }
 
 .close-sidebar:hover {
-    background-color: #232b34;
+    background-color: transparent;
 }
 
 .cover-sidebar {
@@ -80,7 +80,7 @@ article {
 
 footer {
     grid-area: foot;
-    background-color: #343a40;
+    background-color: transparent;
     transform: translateY(100%);
     transition: transform 0.5s ease-in-out;
 }
@@ -101,7 +101,7 @@ footer {
     height: 50px;
     width: 60px;
     margin-right: -9px;
-    background-color: #343a40;
+    background-color: transparent;
     transition: background-color 0.3s ease;
     border-radius: 10px;
     display: flex;
@@ -232,7 +232,7 @@ footer {
     width: 181px;
     text-align: center;
     cursor: pointer;
-    background-color: #45525f;
+    background-color: transparent;
     border-radius: 5px;
 }
 
@@ -240,7 +240,7 @@ footer {
     width: 181px;
     text-align: center;
     cursor: pointer;
-    background-color: #45525f;
+    background-color: transparent;
     border-radius: 5px;
 }
 

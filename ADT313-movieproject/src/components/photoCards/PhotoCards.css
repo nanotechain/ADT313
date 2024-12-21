@@ -1,7 +1,7 @@
 .card-photo-data {
     max-width: 281px;
-    border: 20px solid #4f4f60;
-    background-color: #4f4f60;
+    border: 20px solid transparent;;
+    background-color: transparent;;
     border-radius: 10px;
     color: white;
     text-align: center;

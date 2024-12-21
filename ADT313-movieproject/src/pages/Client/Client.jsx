@@ -50,6 +50,7 @@ function Client() {
 
     return (
         <>
+        <div class="bg-Login">
             <main className="box">
                 <header>
                     <h1 className="title-text" onClick={() => navigate('/home')}>DontFlix</h1>
@@ -89,7 +90,6 @@ function Client() {
                             <FontAwesomeIcon icon={faUserCircle} className='photo-user-img' />
                             <span className="user-info-data">
                                 <h1 className="name-user">{auth.user.firstName}</h1>
-                                <p className="role-user">Role as: <strong>{auth.user.role}</strong></p>
                             </span>
                         </div>
                     </div>
@@ -114,6 +114,7 @@ function Client() {
                     </ul>
                 </div>
             </main>
+            </div>
         </>
     )
 }
